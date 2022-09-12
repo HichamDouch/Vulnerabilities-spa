@@ -24,6 +24,9 @@ module.exports = {
         'xs': '.3rem',
         'sm': '.4rem',
       },
+      screens : {
+        "3xl"  : "1680px"
+      }
     },
   },
   plugins: [],

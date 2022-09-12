@@ -1,6 +1,6 @@
 <template>
    <div class="pt-6">
-        <div class="flex flex-wrap items-center justify-between flex-col-reverse sm:mx-[.5rem] 2xl:mx-[2rem] md:flex-row">
+        <div class="flex flex-wrap items-center justify-between flex-col-reverse  md:flex-row">
             <label for="search" class="flex items-center bg-primary py-[.9rem] px-4 w-full rounded-sm lg:rounded-sm lg:w-[29rem]">
                 <span class="opacity-80"><svg xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 14.775 14.775"><g id="Icon_feather-search" data-name="Icon feather-search" transform="translate(1 1)"><path id="Path_7" data-name="Path 7" d="M15.487,9.993A5.493,5.493,0,1,1,9.993,4.5,5.493,5.493,0,0,1,15.487,9.993Z" transform="translate(-4.5 -4.5)" fill="none" stroke="#aaa" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/><path id="Path_8" data-name="Path 8" d="M27.962,27.962l-2.987-2.987" transform="translate(-15.602 -15.602)" fill="none" stroke="#aaa" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/></g></svg></span>
                 <input class="border-none bg-transparent outline-none px-2 text-[.8rem] text-white" v-model="searchValue" type="text" name="search" id="search" placeholder="Search...">
@@ -8,9 +8,9 @@
             <router-link to="post/create" class="w-full md:w-fit"><button class="bg-primary-btn-color px-4 py-2 rounded-xs my-2 lg:rounded-sm text-lg lg:text-sm font-medium w-full md:w-fit hover:bg-violet-800 hover:transition-all delay-75 uppercase ">create new post</button></router-link> 
         </div>
 
-        <div class="py-4 flex flex-col md:flex-row flex-wrap align-center justify-center sm:justify-between  2xl:justify-center">
-            <div v-for="vulnerability in filteredList" :key="vulnerability.id" class="text-center text-white py-2 lg:p-2">
-                <div class="flex items-center justify-center flex-col rounded-xs lg:rounded-sm  bg-primary p-4 flex-1 xl:w-[20rem] 2xl:h-[31.31rem] 2xl:w-[24.31rem] relative">
+        <div class="grid gap-4 grid-cols-1 py-4 align-center lg:grid-cols-2 xl:grid-cols-3 3xl:grid-cols-4">
+            <div v-for="vulnerability in filteredList" :key="vulnerability.id" class="text-center text-white">
+                <div class="flex items-center justify-center flex-col rounded-xs lg:rounded-sm  bg-primary p-4  relative">
                     <div class="flex items-center justify-between w-full relative">
                         <span class="hover:text-star-color cursor-pointer" :class="starred.includes(vulnerability.id) ? 'text-star-color' : 'text-zinc-500'" @click="addToStarred(vulnerability.id)"><svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 27.128 25.965"><path id="Icon_awesome-star" data-name="Icon awesome-star" d="M13.55.9,10.239,7.616,2.831,8.7a1.623,1.623,0,0,0-.9,2.769l5.36,5.223L6.025,24.065a1.622,1.622,0,0,0,2.353,1.709l6.627-3.484,6.627,3.484a1.623,1.623,0,0,0,2.353-1.709l-1.268-7.378,5.36-5.223a1.623,1.623,0,0,0-.9-2.769l-7.408-1.08L16.461.9A1.624,1.624,0,0,0,13.55.9Z" transform="translate(-1.441 0.001)" fill="currentColor"/></svg></span>
                         <span class="text-zinc-500 cursor-pointer transition delay-75 hover:text-zinc-200 relative z-40" :class="{'text-zinc-200':isActionListOpen && activeCardId == vulnerability.id}" @click="openActionList(vulnerability.id)"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-more-vertical"><circle cx="12" cy="12" r="1"></circle><circle cx="12" cy="5" r="1"></circle><circle cx="12" cy="19" r="1"></circle></svg></span>
